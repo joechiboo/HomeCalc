@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # 當推送到 main 分支時觸發
+      - claude/setup-s-feature-01CxPuvSpQdsjEpH5EkGfT32  # 當前開發分支
 
   # 允許手動觸發
   workflow_dispatch:
