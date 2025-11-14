@@ -5,7 +5,7 @@ import { calculateMortgage, comparePlans, formatCurrency } from '../utils/mortga
 // 響應式狀態
 const principal = ref(16102679);
 const monthlyPayment = ref(64432);
-const annualRate = ref(2.16);
+const annualRate = ref(2.19);
 
 // 計算結果
 const result = computed(() => {
