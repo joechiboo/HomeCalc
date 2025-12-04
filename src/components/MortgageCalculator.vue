@@ -3,7 +3,7 @@ import { ref, computed, watch } from 'vue';
 import { calculateMortgage, comparePlans, formatCurrency } from '../utils/mortgage';
 
 // 響應式狀態
-const principal = ref(16102679);
+const principal = ref(16057207); // 更新為最新的房貸本金餘額（2024/12/20）
 const monthlyPayment = ref(64432);
 const annualRate = ref(2.19);
 
@@ -144,31 +144,6 @@ const suggestions = {
         <div class="summary-card">
           <div class="summary-label">總利息支出</div>
           <div class="summary-value highlight">{{ formatCurrency(result.totalInterest) }} 元</div>
-        </div>
-      </div>
-
-      <!-- 前3期還款明細 -->
-      <div class="payment-schedule">
-        <h3>前3期還款明細</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>期數</th>
-                <th class="text-right">利息</th>
-                <th class="text-right">本金</th>
-                <th class="text-right">剩餘本金</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="row in result.schedule" :key="row.period">
-                <td>第 {{ row.period }} 期</td>
-                <td class="text-right">{{ formatCurrency(row.interest) }} 元</td>
-                <td class="text-right">{{ formatCurrency(row.principal) }} 元</td>
-                <td class="text-right">{{ formatCurrency(row.remaining) }} 元</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
 
