@@ -316,12 +316,10 @@ export default {
     },
     setTotalYears(years) {
       this.totalYears = years;
-      // 調整階段結束月份
-      this.stages.forEach((stage, index) => {
-        if (stage.endMonth > this.totalMonths) {
-          stage.endMonth = this.totalMonths;
-        }
-      });
+      // 自動將最後一個階段的結束月份設為預測期間的總月數
+      if (this.stages.length > 0) {
+        this.stages[this.stages.length - 1].endMonth = this.totalMonths;
+      }
       this.calculate();
     },
     calculate() {
