@@ -241,12 +241,12 @@ export default {
         {
           code: '0050',
           shares: 1760,
-          price: 62.20,
+          price: 65.44,
         },
         {
           code: '0056',
           shares: 137,
-          price: 36.40,
+          price: 36.64,
         },
       ],
       // 投資階段設定
