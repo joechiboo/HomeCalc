@@ -3,7 +3,7 @@ import { ref, computed, watch } from 'vue';
 import { calculateMortgage, comparePlans, formatCurrency } from '../utils/mortgage';
 
 // 響應式狀態
-const principal = ref(16022079); // 更新為最新的房貸本金餘額（2025/12/31）
+const principal = ref(15667257); // 更新為最新的房貸本金餘額（2026/11/03）
 const monthlyPayment = ref(64432);
 const annualRate = ref(2.19);
 
