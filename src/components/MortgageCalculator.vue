@@ -152,20 +152,20 @@ const suggestions = {
         <h3>與方案A比較（70,000元/月，2.19%）</h3>
         <div class="comparison-grid">
           <div class="comparison-item">
-            <span class="comparison-label">每月減少支出：</span>
-            <span class="comparison-value positive">
-              {{ formatCurrency(result.comparison.monthlyDiff) }} 元
+            <span class="comparison-label">{{ result.comparison.monthlyDiff > 0 ? '每月增加支出' : '每月減少支出' }}：</span>
+            <span class="comparison-value" :class="result.comparison.monthlyDiff > 0 ? 'warning' : 'positive'">
+              {{ formatCurrency(Math.abs(result.comparison.monthlyDiff)) }} 元
             </span>
           </div>
           <div class="comparison-item">
-            <span class="comparison-label">還款期限增加：</span>
-            <span class="comparison-value warning">
+            <span class="comparison-label">{{ parseFloat(result.comparison.yearsSaved) >= 0 ? '還款期限縮短' : '還款期限增加' }}：</span>
+            <span class="comparison-value" :class="parseFloat(result.comparison.yearsSaved) >= 0 ? 'positive' : 'warning'">
               約 {{ Math.abs(parseFloat(result.comparison.yearsSaved)) }} 年
             </span>
           </div>
           <div class="comparison-item">
-            <span class="comparison-label">增加利息支出：</span>
-            <span class="comparison-value negative">
+            <span class="comparison-label">{{ result.comparison.interestSaved >= 0 ? '節省利息支出' : '增加利息支出' }}：</span>
+            <span class="comparison-value" :class="result.comparison.interestSaved >= 0 ? 'positive' : 'negative'">
               {{ formatCurrency(Math.abs(result.comparison.interestSaved)) }} 元
             </span>
           </div>
