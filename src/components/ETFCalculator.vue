@@ -232,23 +232,34 @@ import {
   formatCurrency as formatCurr,
 } from '../utils/etf.js';
 
+// 本地私人覆寫（src/private/ 在 .gitignore，不會進 repo 也不會部署到線上）
+// 檔案格式見 src/private/etf.js；沒有該檔時使用下方預設值
+const privateModules = import.meta.glob('../private/etf.js', { eager: true });
+const privateDefaults = Object.values(privateModules)[0]?.default || {};
+
+// 公開預設值（會部署到線上）：股價更新於 2026/11/03
+const defaultHoldings = [
+  {
+    code: '0050',
+    shares: 1760,
+    price: 101.30,
+  },
+  {
+    code: '0056',
+    shares: 137,
+    price: 53.85,
+  },
+];
+
 export default {
   name: 'ETFCalculator',
   data() {
     return {
-      // 當前持倉 - 使用者預設值
-      holdings: [
-        {
-          code: '0050',
-          shares: 1760,
-          price: 65.44,
-        },
-        {
-          code: '0056',
-          shares: 137,
-          price: 36.64,
-        },
-      ],
+      // 當前持倉：公開預設值，再套上本地私人覆寫（如持有股數）
+      holdings: defaultHoldings.map((h) => ({
+        ...h,
+        ...(privateDefaults.holdings?.[h.code] || {}),
+      })),
       // 投資階段設定
       stages: [
         {

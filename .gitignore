@@ -25,3 +25,6 @@ dist-ssr
 
 # 本地私人文檔（不推送到 GitHub）
 docs/
+
+# 本地私人覆寫（持股等，不推上 repo）
+src/private/
